@@ -1,0 +1,24 @@
+{
+  "name": "goo-bot",
+  "version": "1.0.0",
+  "description": "Creating a twitter bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016\u0016\u0016\u0016https://github.com/christiestringer/goo-bot.git"
+  },
+  "keywords": [
+    "google",
+    "twitter",
+    "api"
+  ],
+  "author": "Christie Stringer",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
+}
