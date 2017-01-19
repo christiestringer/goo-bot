@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-bot",
+  "version": "1.0.0",
+  "description": "Tweets a list of restaurants in an area that you tweet it",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christiestringer/goo-bot.git"
+  },
+  "author": "Christie Stringer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christiestringer/goo-bot/issues"
+  },
+  "homepage": "https://github.com/christiestringer/goo-bot#readme"
+}
