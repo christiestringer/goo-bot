@@ -51,32 +51,40 @@ function tweetIt(txt){
 
 
 function search(location, user) {
-    yelp.search({term: 'restaurants', location: location, limit: '4', sort:'2', radius_filter: '4000'})
+    yelp.search({term: 'restaurants', location: location, limit: '3', sort:'2', radius_filter: '4000'})
         .then(function (data) {
 
             let temp = "";
 
             var list = [];
+            var ratings = [];
+            var menu = [];
+
             // console.log(data); // print the data returned from the API call
             var jsonString = JSON.stringify(data); // convert data to JSON string
             jsonBussObj = JSON.parse(jsonString).businesses; // Parse JSON string to JSON Object
             for(var i = 0; i< jsonBussObj.length; i++){
                 list.push(jsonBussObj[i].name);
+                ratings.push(jsonBussObj[i].rating);
+                menu.push(jsonBussObj[i].menu_provider);
                 // console.log(jsonBussObj[i].name);
             }
             for(var j = 0; j< list.length; j++){
                 if(j == list.length-1){
-                    temp += 'or ' + list[j];
+                    temp += 'or ' + list[j] + ": " + ratings[j] + "/5 " + menu[j];
                 }
                 else{
-                    temp += list[j] + ", ";
+                    temp += list[j] + ": " + ratings[j] + "/5 , ";
                 }
                 console.log(list[j]);
 
             }
 
 
-            var newtweet = '@' + user + ' have you tried... ' + temp + " in " + location ;
+            var newtweet = '@' + user + ' have you tried... ' + temp + " in " +
+                location.replace(/\w\S*/g, function(txt){
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                }); ;
 
             tweetIt(newtweet);
 
