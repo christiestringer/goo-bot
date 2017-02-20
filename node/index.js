@@ -20,7 +20,7 @@ function tweetEvent(eventMsg) {
     var from = eventMsg.user.screen_name;
     var location = separateTweet(text);
 
-    if(replyto === 'foodlocatebot'){
+    if(replyto === 'foodLocationBot'){
         search(location, from);
     }
 }
@@ -59,7 +59,7 @@ function search(location, user) {
 
             var list = [];
             var ratings = [];
-            var menu = [];
+            var url = [];
 
             // console.log(data); // print the data returned from the API call
             var jsonString = JSON.stringify(data); // convert data to JSON string
@@ -72,12 +72,12 @@ function search(location, user) {
             }
             for(var j = 0; j< list.length; j++){
                 if(j == list.length-1){
-                    temp += 'or ' + list[j] + ": " + ratings[j] + "/5 " + menu[j];
+                    temp += 'or ' + list[j] + ": " + ratings[j] + "/5 " ;
                 }
                 else{
                     temp += list[j] + ": " + ratings[j] + "/5 , ";
                 }
-                console.log(list[j]);
+               // console.log(list[j]);
 
             }
 
@@ -86,7 +86,7 @@ function search(location, user) {
                 location.replace(/\w\S*/g, function(txt){
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 }); ;
-
+           // console.log(newtweet);
             tweetIt(newtweet);
 
         })
