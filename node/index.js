@@ -70,7 +70,6 @@ function search(location, user) {
                 //console.log(jsonBussObj);
             }
             for(var j = 0; j< list.length; j++){
-                link =
                 if(j == list.length-1){
                     temp += 'or ' + list[j] + ": " + ratings[j] + "/5 " ;
                 }
