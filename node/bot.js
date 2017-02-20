@@ -8,6 +8,7 @@ var yelp = new Yelp(yelpconfig);
 
 var restList = [];
 
+console.log("running");
 
 var stream = T.stream('user');
 stream.on('tweet', tweetEvent);
@@ -19,7 +20,7 @@ function tweetEvent(eventMsg) {
     var from = eventMsg.user.screen_name;
     var location = separateTweet(text);
 
-    if(replyto === 'christieupskill'){
+    if(replyto === 'foodlocatebot'){
         search(location, from);
     }
 }
@@ -62,12 +63,12 @@ function search(location, user) {
 
             // console.log(data); // print the data returned from the API call
             var jsonString = JSON.stringify(data); // convert data to JSON string
-            jsonBussObj = JSON.parse(jsonString).businesses; // Parse JSON string to JSON Object
-            for(var i = 0; i< jsonBussObj.length; i++){
-                list.push(jsonBussObj[i].name);
-                ratings.push(jsonBussObj[i].rating);
-                menu.push(jsonBussObj[i].menu_provider);
-                // console.log(jsonBussObj[i].name);
+            jsonBusinessObject = JSON.parse(jsonString).businesses; // Parse JSON string to JSON Object
+            for(var i = 0; i< jsonBusinessObject.length; i++){
+                list.push(jsonBusinessObject[i].name);
+                ratings.push(jsonBusinessObject[i].rating);
+                menu.push(jsonBusinessObject[i].menu_provider);
+                // console.log(jsonBusinessObject[i].name);
             }
             for(var j = 0; j< list.length; j++){
                 if(j == list.length-1){
