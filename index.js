@@ -55,11 +55,18 @@ function search(location, user) {
     yelp.search({term: 'restaurants', location: location, limit: '3', sort:'2', radius_filter: '4000'})
         .then(function (data) {
 
+            let temp = "";
+
+            var list = [];
+            var ratings = [];
+
+            // console.log(data); // print the data returned from the API call
             var jsonString = JSON.stringify(data); // convert data to JSON string
             jsonBusinessObject = JSON.parse(jsonString).businesses; // Parse JSON string to JSON Object
             for(var i = 0; i< jsonBusinessObject.length; i++){
                 list.push(jsonBusinessObject[i].name);
                 ratings.push(jsonBusinessObject[i].rating);
+                // console.log(jsonBusinessObject[i].name);
             }
             for(var j = 0; j< list.length; j++){
                 if(j == list.length-1){
